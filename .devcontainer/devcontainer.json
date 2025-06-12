@@ -1,0 +1,22 @@
+{
+  "name": "GCP Terraform Development Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hashicorp.terraform",
+        "GoogleCloudTools.cloudcode"
+      ],
+      "settings": {
+        "terraform.formatOnSave": true,
+        "terraform.lintOnSave": true
+      }
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder}/account.json,target=/workspace/account.json,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "terraform init"
+}
